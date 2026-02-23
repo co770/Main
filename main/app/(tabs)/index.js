@@ -6,7 +6,7 @@ function App(){
   return(
     <View style={{width:'100%',height:'100%',backgroundColor:'blue',alignItems:'center',justifyContent:'center'}}>
       <Text style={{color:'white'}}>hello welcome to react</Text>
-    <TouchableOpacity style={{backgroundColor:'red',borderRadius:8}}><Text style={{color:'white',width:150,height:50,alignItems:'center',justifyContent:'center',marginTop:10}}>Hello</Text></TouchableOpacity>
+    <TouchableOpacity style={{backgroundColor:'red',borderRadius:8,alignItems:'center',justifyContent:'center',marginTop:10,width:150,height:50}}><Text style={{color:'white'}}>Hello</Text></TouchableOpacity>
     </View>
     )
 }
