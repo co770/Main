@@ -7,7 +7,7 @@ export default function Layout() {
   return(
     <Stack screenOptions={{
       headerRight:()=>(
-      <View style={{flexDirection:'row'}}><Text>hello</Text><Text>hi</Text></View>
+      <View style={{flexDirection:'row',justifyContent:'space-evenly',paddingRight:15}}><Text>hello</Text><Text>hi</Text></View>
       )
     }}/>
     
