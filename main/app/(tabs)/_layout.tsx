@@ -4,33 +4,12 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Logo from '../../assets/images/icon.png'
 export default function Layout() {
-  return (
-    <Stack
-      screenOptions={{
-        headerShown: true,
-        headerTitle: () => (
-          <Image
-            source={Logo}
-            style={{ width: 40, height: 40, borderRadius: 20 }}
-          />
-        ),
-        headerLeft: () => (
-          <TouchableOpacity style={{ marginLeft: 15 }}>
-            <Ionicons name="menu" size={24} color="white" />
-          </TouchableOpacity>
-        ),
-        headerRight: () => (
-          <View style={{ flexDirection: 'row', marginRight: 15 }}>
-            <TouchableOpacity style={{ marginHorizontal: 5 }}>
-              <Ionicons name="search" size={24} color="white" />
-            </TouchableOpacity>
-            <TouchableOpacity style={{ marginHorizontal: 5 }}>
-              <Ionicons name="notifications" size={24} color="white" />
-            </TouchableOpacity>
-          </View>
-        ),
-        headerStyle: { backgroundColor: '#1E40AF', height: 80 },
-      }}
-    />
-  );
+  return(
+    <Stack screenOptions={{
+      headerRight:()=(
+      <View style={{flexDirection:'row'}}><Text>hello</Text><Text>hi</Text></View>
+      )
+    }}/>
+    
+    )
 }
