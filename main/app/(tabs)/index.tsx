@@ -1,98 +1,103 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+export default function Calculator() {
+  const [input, setInput] = useState('');
+  const [result, setResult] = useState('');
 
-export default function HomeScreen() {
+  const handlePress = (value) => {
+    if (value === 'C') {
+      setInput('');
+      setResult('');
+    } else if (value === '=') {
+      try {
+        // Evaluate expression safely
+        const evalResult = eval(input); // For small demo apps only
+        setResult(evalResult.toString());
+      } catch (error) {
+        setResult('Error');
+      }
+    } else {
+      setInput(input + value);
+    }
+  };
+
+  const buttons = [
+    ['7', '8', '9', '/'],
+    ['4', '5', '6', '*'],
+    ['1', '2', '3', '-'],
+    ['0', '.', 'g', '+'],
+    ['='],
+  ];
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcbwome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    <View style={styles.container}>
+      <View style={styles.display}>
+        <Text style={styles.input}>{input}</Text>
+        <Text style={styles.result}>{result}</Text>
+      </View>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      <View style={styles.buttonsContainer}>
+        {buttons.map((row, rowIndex) => (
+          <View key={rowIndex} style={styles.row}>
+            {row.map((button) => (
+              <TouchableOpacity
+                key={button}
+                style={styles.button}
+                onPress={() => handlePress(button)}
+              >
+                <Text style={styles.buttonText}>{button}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        ))}
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: '#f0f0f0',
+    justifyContent: 'center',
+  },
+  display: {
+    marginBottom: 20,
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 8,
+    minHeight: 120,
+    justifyContent: 'center',
+  },
+  input: {
+    fontSize: 32,
+    color: '#333',
+  },
+  result: {
+    fontSize: 24,
+    color: '#888',
+    marginTop: 10,
+    textAlign: 'right',
+  },
+  buttonsContainer: {},
+  row: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 12,
+  },
+  button: {
+    backgroundColor: '#4a90e2',
+    flex: 1,
+    margin: 4,
+    borderRadius: 8,
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'center',
+    height: 60,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  buttonText: {
+    fontSize: 24,
+    color: '#fff',
   },
 });
