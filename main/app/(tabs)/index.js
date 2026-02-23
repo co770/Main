@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import {Text,View,StyleSheet,TouchableOpacity,Image} from 'react-native'
-import Logo from '../assets/images/icon.png'
+import Logo from '../../assets/images/icon.png'
 
 function App(){
   return(
