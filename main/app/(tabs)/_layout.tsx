@@ -14,11 +14,6 @@ export default function Layout() {
             style={{ width: 40, height: 40, borderRadius: 20 }}
           />
         ),
-        headerLeft: () => (
-          <TouchableOpacity style={{ marginLeft: 15 }}>
-            <Ionicons name="menu" size={24} color="white" />
-          </TouchableOpacity>
-        ),
         headerRight: () => (
           <View style={{ flexDirection: 'row', marginRight: 15 }}>
             <TouchableOpacity style={{ marginHorizontal: 5 }}>
