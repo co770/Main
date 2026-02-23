@@ -2,7 +2,7 @@ import React from 'react';
 import { Stack } from 'expo-router';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
+import Logo from '../../assets/images/icon.png'
 export default function Layout() {
   return (
     <Stack
@@ -10,7 +10,7 @@ export default function Layout() {
         headerShown: true,
         headerTitle: () => (
           <Image
-            source={{ uri: 'https://placekitten.com/40/40' }}
+            source={Logo}
             style={{ width: 40, height: 40, borderRadius: 20 }}
           />
         ),
