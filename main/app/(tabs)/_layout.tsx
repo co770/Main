@@ -6,7 +6,7 @@ import Logo from '../../assets/images/icon.png'
 export default function Layout() {
   return(
     <Stack screenOptions={{
-      headerRight:()=(
+      headerRight:()=>(
       <View style={{flexDirection:'row'}}><Text>hello</Text><Text>hi</Text></View>
       )
     }}/>
