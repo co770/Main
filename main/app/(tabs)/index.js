@@ -1,27 +1,13 @@
-import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import React,{useState} from 'react'
+import {Text,View,StyleSheet} from 'react-native'
 
-export default function App() {
-  const [count, setCount] = useState(0);
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Count: {count}</Text>
-      <Button title="Increase" onPress={() => setCount(count + 1)} />
+function App(){
+  return(
+    <View>
+      <Text style={{color:'white'}}>hello welcome to react</Text>
     </View>
-  );
+    )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  text: {
-    fontSize: 24,
-    marginBottom: 20,
-    color:'white'
-    
-  }
-});
+export default App
