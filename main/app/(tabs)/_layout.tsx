@@ -9,7 +9,7 @@ export default function Layout() {
     screenOption={{
       headerRight:()=>(
       <View>
-        <Ionicons name="home" size={24} color="black"/>
+        <Ionicons name="home" size={24} color="white"/>
       </View>
       )
     }}
