@@ -14,7 +14,7 @@ export default function Layout() {
         <Ionicons name="person" size={24} color="white"/>
       </View>
       ),
-    
+      headerTitle:'',
       headerTintColor:'white'
     }}
       />
