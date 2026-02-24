@@ -1,27 +1,29 @@
 import React from 'react';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import { Drawer } from 'expo-router/drawer';
-import { View, Text, TouchableOpacity } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { DrawerContentScrollView, DrawerItemList, DrawerContentComponentProps } from '@react-navigation/drawer';
 
-function CustomDrawerContent() {
+function CustomDrawer(props: DrawerContentComponentProps) {
   return (
-    <View style={{ flex: 1, padding: 20 }}>
-      {/* Custom button */}
-      <TouchableOpacity
-        style={{ backgroundColor: 'red', padding: 10, marginBottom: 20 }}
-        onPress={() => {}} // does nothing
-      >
-        <Text style={{ color: 'white' }}>Go to Home</Text>
-      </TouchableOpacity>
+    <DrawerContentScrollView {...props}>
+      {/* Custom header with image */}
+      <View style={styles.header}>
+        <Image
+          source={{ uri: 'https://placekitten.com/100/100' }}
+          style={styles.avatar}
+        />
+        <Text style={styles.username}>Tony Stark</Text>
+      </View>
 
-      {/* Another custom button */}
-      <TouchableOpacity
-        style={{ backgroundColor: 'blue', padding: 10, marginBottom: 20 }}
-        onPress={() => {}} // does nothing
-      >
-        <Text style={{ color: 'white' }}>Go to Profile</Text>
-      </TouchableOpacity>
-    </View>
+      {/* Keep automatic drawer items */}
+      <DrawerItemList {...props} />
+
+      {/* Optional: extra footer */}
+      <View style={styles.footer}>
+        <Text>Version 1.0.0</Text>
+      </View>
+    </DrawerContentScrollView>
   );
 }
 
@@ -29,7 +31,7 @@ export default function Layout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
-        drawerContent={CustomDrawerContent} // pass the custom drawer here
+        drawerContent={(props) => <CustomDrawer {...props} />}
         screenOptions={{
           drawerActiveTintColor: 'red',
           swipeEnabled: true,
@@ -38,3 +40,28 @@ export default function Layout() {
     </GestureHandlerRootView>
   );
 }
+
+const styles = StyleSheet.create({
+  header: {
+    padding: 20,
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderColor: '#ccc',
+    marginBottom: 10,
+  },
+  avatar: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    marginBottom: 10,
+  },
+  username: {
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+  footer: {
+    padding: 20,
+    borderTopWidth: 1,
+    borderColor: '#ccc',
+  },
+});
