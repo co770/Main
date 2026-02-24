@@ -8,10 +8,10 @@ export default function Layout() {
     <Stack
     screenOptions={{
       headerRight:()=>(
-      <View style={{width:150,justifyContent:'space-evenly'
+      <View style={{width:150,justifyContent:'space-evenly',flexDirection:'row'
       }}>
         <Ionicons name="home" size={24} color="white"/>
-        <Ionicons name="profile" size={24} color="white"/>
+        <Ionicons name="person" size={24} color="white"/>
       </View>
       ),
       headerTitle:''
