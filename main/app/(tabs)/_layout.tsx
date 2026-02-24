@@ -3,16 +3,13 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 import { Drawer } from 'expo-router/drawer';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { DrawerContentScrollView, DrawerItemList, DrawerContentComponentProps } from '@react-navigation/drawer';
-
+import Logo from '../../assets/images/icon.png'
 function CustomDrawer(props: DrawerContentComponentProps) {
   return (
     <DrawerContentScrollView {...props}>
       {/* Custom header with image */}
       <View style={styles.header}>
-        <Image
-          source={{ uri: 'https://placekitten.com/100/100' }}
-          style={styles.avatar}
-        />
+              <Image source={Logo} style={{width:'40%',height:'40%'}}/>
         <Text style={styles.username}>Tony Stark</Text>
       </View>
 
