@@ -5,6 +5,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 export default function Layout() {
   return (
-    <Drawer />
+    <Drawer screenOptions={{
+      drawerActiveTintColor:'red',
+    }}/>
       
       )}
