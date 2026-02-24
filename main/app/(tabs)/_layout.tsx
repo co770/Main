@@ -3,7 +3,7 @@ import { Drawer } from 'expo-router/drawer';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import {GestureHandlerRootView} from 'react-native-gesture-handler'
-import {DrawerContentComponentProps} from 'react-navigation/drawer'
+import {DrawerContentComponentProps,DrawerItemList,DrawerContentScrollView} from 'react-navigation/drawer'
 function Custom(props:DrawerContentComponentProps){
   return(
     <DrawerContentScrollView {...props}>
