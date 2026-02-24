@@ -6,12 +6,13 @@ import { Ionicons } from '@expo/vector-icons';
 export default function Layout() {
   return (
     <Stack
-    screenOption={{
+    screenOptions={{
       headerRight:()=>(
       <View>
         <Ionicons name="home" size={24} color="white"/>
       </View>
-      )
+      ),
+      headerTitle:''
     }}
       />
       
