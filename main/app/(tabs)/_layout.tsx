@@ -9,6 +9,7 @@ export default function Layout() {
       
           <Drawer screenOptions={{
       drawerActiveTintColor:'red',
+      swipeEnabled:true
     }}/>
     </GestureHandlerRootView>
 
