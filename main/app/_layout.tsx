@@ -6,7 +6,8 @@ export default function RootLayout() {
    screenOptions={{
      headerStyle:{
        backgroundColor:'black',
-       elevation:5
+       elevation:5,
+       height:70
      },
      headerRight:()=>(
      <View><Ionicons name='home' size={22} color="white"/></View>
