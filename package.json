@@ -1,4 +1,13 @@
 {
+  "main": "expo-router/entry",
+  "dependencies": {
+    "expo": "^54.0.33",
+    "nativewind": "^4.2.2",
+    ...
+  }
+}
+
+{
   "dependencies": {
     "expo": "^54.0.33",
     "nativewind": "^4.2.2",
