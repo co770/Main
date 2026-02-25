@@ -1,5 +1,4 @@
-import { Text, View } from "react-native";
-
+import { Text, View,TouchOpacity,TextInput,Image } from "react-native";
 export default function Index() {
   return (
     <View
@@ -9,7 +8,8 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+    <Image source={require('../assets/images/react-logo.png')} style={{width:150,height:150,borderRadius:75}}/>
+    <TextInput/>
     </View>
   );
 }
