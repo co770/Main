@@ -9,7 +9,7 @@ export default function RootLayout() {
        elevation:5,
      },
      headerRight:()=>(
-     <View><Ionicons name='home' size={22} color="white"/></View>
+     <View><Ionicons name='home' size={20} color="white"/></View>
      )
    }}
   
