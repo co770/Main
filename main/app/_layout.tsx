@@ -9,7 +9,7 @@ export default function RootLayout() {
        elevation:5
      },
      headerRight:()=>(
-     <View><Text style={{color:'white'}}>Honda</Text></View>
+     <View><Ionicons name='home' size={22}/></View>
      )
    }}
   
