@@ -1,11 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    // Ensure this points to your source code
-    './app/**/*.{js,tsx,ts,jsx}',
-    // If you use a `src` directory, add: './src/**/*.{js,tsx,ts,jsx}'
-    // Do the same with `components`, `hooks`, `styles`, or any other top-level directories
-  ],
+  // Add the paths to all of your component files so Tailwind can find them
+  content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
+  presets: [require("nativewind/preset")], // This is the missing line
   theme: {
     extend: {},
   },
