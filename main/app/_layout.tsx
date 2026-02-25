@@ -5,9 +5,12 @@ export default function RootLayout() {
   return <Stack
    screenOptions={{
      headerStyle:{
-       backgroundColor:'black',
+       backgroundColor:'',
        elevation:5,
      },
+     headerTitle:()=>(
+     
+     ),
      headerRight:()=>(
      <View><Ionicons name='home' size={20} color="white"/></View>
      )
