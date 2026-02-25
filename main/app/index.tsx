@@ -12,7 +12,7 @@ export default function Index() {
     <TextInput/>
     <TextInput/>
     <TextInput/>
-    <TouchableOpacity style={{backgroundColor:'#0f172a',width:200,height:50,color:'white',justifyContent:'center',alignItems:'center'}}><Text>Login</Text></TouchOpacity>
+    <TouchableOpacity style={{backgroundColor:'#0f172a',width:200,height:50,color:'white',justifyContent:'center',alignItems:'center'}}><Text>Login</Text></TouchableOpacity>
     
     </View>
   );
