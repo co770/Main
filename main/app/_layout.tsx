@@ -7,7 +7,6 @@ export default function RootLayout() {
      headerStyle:{
        backgroundColor:'black',
        elevation:5,
-       height:500
      },
      headerRight:()=>(
      <View><Ionicons name='home' size={22} color="white"/></View>
