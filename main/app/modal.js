@@ -1,6 +1,6 @@
 import { Text, View,TouchableOpacity,TextInput,Image } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons'
-
+import {Link} from 'expo-router'
 export default function Modal() {
   return (
     <View
@@ -22,7 +22,7 @@ export default function Modal() {
     </View>
     
     
-      <Link href="modal" style={{
+      <Link href="/" style={{
   color: 'white',
   backgroundColor: '#2563eb',
   padding: 10,
