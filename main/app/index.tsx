@@ -23,7 +23,7 @@ export default function Index() {
           <Text style={{ fontSize: 12,}}>
             {item.name}
           </Text>
-          <Text numberOfLines={1} ellipsesizeMode="tail">{item.message}</Text>
+          <Text numberOfLines={1} ellipsizeMode="tail">{item.message}</Text>
           </View>
           
           
