@@ -1,12 +1,5 @@
-import React, { useRef, useState } from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Animated,
-  StyleSheet,
-  Dimensions,
-} from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const { width } = Dimensions.get('window');
@@ -19,20 +12,6 @@ export default function CustomTabBar() {
   ];
 
   const [activeTab, setActiveTab] = useState(0);
-  const indicator = useRef(new Animated.Value(0)).current;
-
-  const handleTabPress = (index) => {
-    setActiveTab(index);
-    Animated.spring(indicator, {
-      toValue: index,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  const translateX = indicator.interpolate({
-    inputRange: [0, tabs.length - 1],
-    outputRange: [0, (width / tabs.length) * (tabs.length - 1)],
-  });
 
   return (
     <View style={{ flex: 1 }}>
@@ -47,7 +26,7 @@ export default function CustomTabBar() {
           <TouchableOpacity
             key={tab.name}
             style={styles.tabItem}
-            onPress={() => handleTabPress(index)}
+            onPress={() => setActiveTab(index)}
           >
             <Ionicons
               name={tab.icon}
@@ -65,11 +44,11 @@ export default function CustomTabBar() {
           </TouchableOpacity>
         ))}
 
-        {/* Animated Indicator */}
-        <Animated.View
+        {/* Simple Indicator */}
+        <View
           style={[
             styles.indicator,
-            { width: width / tabs.length, transform: [{ translateX }] },
+            { width: width / tabs.length, left: (width / tabs.length) * activeTab },
           ]}
         />
       </View>
@@ -101,6 +80,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#4caf50',
     position: 'absolute',
     bottom: 0,
-    left: 0,
   },
 });
