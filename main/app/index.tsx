@@ -13,6 +13,7 @@ export default function Index() {
         data={users}
         renderItem={({ item }) => (
         <View style={{flexDirection:'row'}}>
+          <Ionicons name='profile' size={25}/>
           <Text style={{ fontSize: 18, marginBottom: 10 }}>
             {item.name}
           </Text>
