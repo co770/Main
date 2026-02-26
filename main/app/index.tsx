@@ -19,7 +19,8 @@ export default function Index() {
             elevation:2,
             alignItems: "center",
             borderWidth:1,
-            borderColor:'#ccc'
+            borderColor:'#ccc',
+            borderRadius:8
           }}
         >
           {/* Avatar */}
