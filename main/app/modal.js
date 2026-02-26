@@ -6,7 +6,7 @@ export default function Modal() {
     <View
       style={{
         flex: 1,
-        
+        backgroundColor:'red'
         alignItems: "center",
       }}
     >
