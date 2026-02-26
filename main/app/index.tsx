@@ -26,12 +26,15 @@ export default function Index() {
     
     
     
-    <Link href="modal" style={{color:'black'}}>Modal</Link>
-    <TouchableOpacity style={{backgroundColor:'#0f172a',width:280,height:50,color:'white',justifyContent:'center',alignItems:'center',borderRadius:8}}><Text style={{color:'white'}}>Login</Text></TouchableOpacity>
-    
-    
-        <Link href="modal" style={{color:'black'}}>Modal</Link>
-    
+    <Link href="modal" style={{color:'black'}}>Modal</Link><Link href="modal" style={{
+  color: 'white',
+  backgroundColor: '#2563eb',
+  padding: 10,
+  borderRadius: 8,
+  marginVertical: 10,
+  textAlign: 'center'
+}}>Open Modal</Link>
+   
     
     
     </View>
