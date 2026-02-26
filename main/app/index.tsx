@@ -17,7 +17,7 @@ export default function Index() {
     
     <View style={{flexDirection:'row',width:300,justifyContent:'space-between',borderBottomWidth:1,borderBottomColor:'black',marginBottom:20,alignItems:'center'}}>   
     
-    <Ionicons name='home' size={22} color="orange"  style={{marginRight:20}}/>
+    <Ionicons name='person' size={22} color="orange"  style={{marginRight:20}}/>
     <TextInput placeholder="Username" style={{height:40,width:230}}/>
    
     </View>
