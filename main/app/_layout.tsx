@@ -17,6 +17,8 @@ export default function RootLayout() {
    }}
   
   >
-    
+    <Stack.Screen name="index" options={{
+      presentation:'modal'
+    }}/>
   </Stack>;
 }
