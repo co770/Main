@@ -12,6 +12,7 @@ export default function Index() {
       <FlatList
         data={users}
         renderItem={({ item }) => (
+        <TouchableOpacity>
         <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',height:60,borderRadius:8,}}>
           <View style={{alignItems:'center',flexDirection:'row',gap:5}}>
           <Ionicons name='person-circle' size={50} color="grey"/>
@@ -21,6 +22,7 @@ export default function Index() {
           </View>
           <Text style={{color:item.online?'green':'red'}}>{item.online?"online":"offline"}</Text>
           </View>
+          </TouchableOpacity>
         )}
       />
     </View>
