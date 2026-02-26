@@ -22,7 +22,15 @@ export default function Modal() {
     </View>
     
     
-    
+      <Link href="modal" style={{
+  color: 'white',
+  backgroundColor: '#2563eb',
+  padding: 10,
+  borderRadius: 8,
+  marginVertical: 10,
+  textAlign: 'center'
+}}>Open Modal</Link>
+   
     
     
     
