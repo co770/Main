@@ -1,38 +1,25 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { View, Button } from 'react-native';
+import Animated, { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated';
 
-const Tab = createBottomTabNavigator();
-
-// 1. The Custom Bar Component
-function MySimpleTabBar({ state, navigation }) {
-  return (
-    <View style={{ flexDirection: 'row', height: 60, backgroundColor: 'blue' }}>
-      {state.routes.map((route, index) => {
-        const isFocused = state.index === index;
-
-        return (
-          <TouchableOpacity
-            key={route.key}
-            onPress={() => navigation.navigate(route.name)}
-            style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
-          >
-            <Text style={{ color: isFocused ? 'blue' : 'black' }}>
-              {route.name}
-            </Text>
-          </TouchableOpacity>
-        );
-      })}
-    </View>
-  );
-}
-
-// 2. The Main Navigator
 export default function Index() {
+  const offset = useSharedValue(0);
+
+  const animatedStyles = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateX: offset.value }],
+    };
+  });
+
   return (
-    <Tab.Navigator tabBar={(props) => <MySimpleTabBar {...props} />}>
-      <Tab.Screen name="Home" component={() => <View><Text>Home</Text></View>} />
-      <Tab.Screen name="Settings" component={() => <View><Text>Settings</Text></View>} />
-    </Tab.Navigator>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Animated.View style={[{ width: 100, height: 100, backgroundColor: 'blue' }, animatedStyles]} />
+      <Button
+        title="Move Box"
+        onPress={() => {
+          offset.value = withSpring(Math.random() * 300);
+        }}
+      />
+    </View>
   );
 }
