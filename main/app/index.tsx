@@ -1,15 +1,25 @@
-// App.js
 import React from 'react';
 import { View, Button, StyleSheet, Dimensions } from 'react-native';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming, runOnJS } from 'react-native-reanimated';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Animated, { 
+  useSharedValue, 
+  useAnimatedStyle, 
+  withTiming, 
+  runOnJS 
+} from 'react-native-reanimated';
+// Note: We use useNavigation from expo-router to handle the transition
+import { useRouter, useNavigation } from 'expo-router';
 
 const { width, height } = Dimensions.get('window');
-const Stack = createNativeStackNavigator();
 
-function HomeScreen({ navigation }) {
-  const scale = useSharedValue(0.1); // small circle
+export default function HomeScreen() {
+  const router = useRouter();
+  const navigation = useNavigation();
+  const scale = useSharedValue(0.1); 
+
+  // Sets the title for this specific screen within the Layout's Stack
+  React.useEffect(() => {
+    navigation.setOptions({ title: 'Home', headerShown: false });
+  }, [navigation]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     width: 100,
@@ -24,9 +34,11 @@ function HomeScreen({ navigation }) {
 
   const expandCircle = () => {
     scale.value = withTiming(20, { duration: 600 }, () => {
-      // Navigate after animation completes
-      runOnJS(navigation.navigate)('NextScreen');
-      // Optional: reset scale if you come back
+      // Navigate to your next file (e.g., app/NextScreen.tsx)
+      // runOnJS is required to call functions from the UI thread
+      runOnJS(router.push)('/NextScreen');
+      
+      // Reset scale so it's ready when you come back
       scale.value = 0.1;
     });
   };
@@ -39,29 +51,11 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function NextScreen() {
-  return (
-    <View style={[styles.container, { backgroundColor: '#4caf50' }]}>
-      <Button title="You are on Next Screen" onPress={() => {}} />
-    </View>
-  );
-}
-
-export default function Index() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="NextScreen" component={NextScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#fff',
   },
 });
