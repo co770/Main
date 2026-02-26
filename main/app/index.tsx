@@ -12,7 +12,7 @@ export default function Index() {
       <FlatList
         data={users}
         renderItem={({ item }) => (
-        <View style={{flexDirection:'row'}}>
+        <View style={{flexDirection:'row',alignItems:'center'}}>
           <Ionicons name='person-circle' size={50} color="grey"/>
           <Text style={{ fontSize: 18, marginBottom: 10 }}>
             {item.name}
