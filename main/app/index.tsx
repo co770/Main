@@ -5,7 +5,7 @@ const users = [
   { id: "2", name: "Mary", online: false },
 ];
 
-export default function Users() {
+export default function Index() {
   return (
     <FlatList
       data={users}
@@ -15,6 +15,7 @@ export default function Users() {
           style={{
             flexDirection: "row",
             padding: 15,
+            marginBottom:10
             alignItems: "center",
             borderBottomWidth: 0.5,
           }}
