@@ -18,7 +18,8 @@ export default function Index() {
             marginBottom:10,
             elevation:8
             alignItems: "center",
-            borderBottomWidth: 0.5,
+            borderWidth:1,
+            borderColor:'#ccc'
           }}
         >
           {/* Avatar */}
