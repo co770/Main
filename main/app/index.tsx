@@ -9,32 +9,15 @@ const users = [
 export default function Index() {
   return (
     <View style={{ flex: 1, padding: 20,gap:5 }}>
-      <FlatList
-        data={users}
-        renderItem={({ item }) => (
-        
-        
-        <TouchableOpacity>
-        <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',height:60,borderRadius:8,}}>
-          <View style={{alignItems:'center',flexDirection:'row',gap:5}}>
-          <Ionicons name='person-circle' size={50} color="grey"/>
-          <View>
-            
-          <Text style={{ fontSize: 12,}}>
-            {item.name}
-          </Text>
-          <Text numberOfLines={1} ellipsizeMode="tail">{item.message}</Text>
-          </View>
-          
-          
-          </View>
-          <Text style={{color:item.online?'green':'red'}}>{item.online?"online":"offline"}</Text>
-          </View>
-          </TouchableOpacity>
-          
-          
-        )}
-      />
+<FlatList data={users} keyExtractor={(item)=>item.id}
+renderItem={({item})=>(
+<View
+<TouchableOpacity>
+  <Text style={{fontWeight:'bold'}}>{item.name}</Text>
+  <Text>{item.message}</Text>
+</TouchableOpacity>
+</View>
+)}/>
     </View>
   );
 }
