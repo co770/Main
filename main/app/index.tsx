@@ -11,7 +11,6 @@ export default function Index() {
     <View style={{ flex: 1, padding: 20 }}>
       <FlatList
         data={users}
-        keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Text style={{ fontSize: 18, marginBottom: 10 }}>
             {item.name}
