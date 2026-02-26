@@ -1,11 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+// REMOVED: NavigationContainer import is no longer needed here
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const { width } = Dimensions.get('window');
 
-// 1. Placeholder Screens
 const HomeScreen = () => (
   <View style={styles.screen}><Text>Home Feed</Text></View>
 );
@@ -13,7 +12,6 @@ const ProfileScreen = () => (
   <View style={styles.screen}><Text>Profile Screen</Text></View>
 );
 
-// 2. Custom Floating Tab Bar Component
 function FloatingTabBar({ state, descriptors, navigation }) {
   return (
     <View style={styles.tabContainer}>
@@ -52,20 +50,18 @@ function FloatingTabBar({ state, descriptors, navigation }) {
   );
 }
 
-// 3. Main App
 const Tab = createBottomTabNavigator();
 
 export default function Index() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        tabBar={(props) => <FloatingTabBar {...props} />}
-        screenOptions={{ headerShown: false }}
-      >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    // NavigationContainer removed from here [1, 4]
+    <Tab.Navigator
+      tabBar={(props) => <FloatingTabBar {...props} />}
+      screenOptions={{ headerShown: false }}
+    >
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
+    </Tab.Navigator>
   );
 }
 
@@ -73,25 +69,23 @@ const styles = StyleSheet.create({
   screen: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#f0f0f0' },
   tabContainer: {
     position: 'absolute',
-    bottom: 30, // Distance from bottom of screen
+    bottom: 30,
     width: width,
     alignItems: 'center',
   },
   floatingBar: {
     flexDirection: 'row',
     backgroundColor: '#ffffff',
-    width: width * 0.85, // Width of the floating bar
+    width: width * 0.85,
     height: 65,
-    borderRadius: 35, // Rounded corners
+    borderRadius: 35,
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 20,
-    // Shadow for iOS
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.1,
     shadowRadius: 10,
-    // Elevation for Android
     elevation: 10,
   },
   tabButton: { alignItems: 'center', flex: 1 },
