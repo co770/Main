@@ -10,8 +10,7 @@ export default function Modal() {
         alignItems: "center",
       }}
     >
-    <Image source={require('../assets/images/react-logo.png')} style={{width:150,height:150,borderRadius:75,marginTop:150}}/>
-    
+
     
     
     
