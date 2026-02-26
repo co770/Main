@@ -12,7 +12,7 @@ export default function RootLayout() {
      <View style={{width:270,borderRadius:8,alignItems:'center',borderWidth:1,borderColor:'white',flexDirection:'row'}}><Ionicons name='search' size={20}  color="white" style={{marginLeft:10}}/><TextInput/></View>
      ),
      headerRight:()=>(
-     <View><Ionicons name='home' size={20} color="white"/></View>
+     <View><Ionicons name='home' size={20} color="white" style={{marginRight:10}}/></View>
      )
    }}
   
