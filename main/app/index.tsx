@@ -12,7 +12,7 @@ export default function Index() {
       <FlatList
         data={users}
         renderItem={({ item }) => (
-        <View>
+        <View style={{flexDirection:'row'}}>
           <Text style={{ fontSize: 18, marginBottom: 10 }}>
             {item.name}
           </Text>
