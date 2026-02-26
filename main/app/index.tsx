@@ -22,8 +22,8 @@ export default function HomeScreen() {
   }, [navigation]);
 
   const animatedStyle = useAnimatedStyle(() => ({
-    width: 100,
-    height: 100,
+    width: 0,
+    height: 0,
     borderRadius: 50,
     backgroundColor: 'tomato',
     transform: [{ scale: scale.value }],
