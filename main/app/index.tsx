@@ -1,9 +1,9 @@
 import { View, Text, FlatList } from "react-native";
 import {Ionicons} from '@expo/vector-icons'
 const users = [
-  { id: "1", name: "John" },
-  { id: "2", name: "Mary" },
-  { id: "3", name: "David" },
+  { id: "1", name: "John",online:"true"},
+  { id: "2", name: "Mary", online:"false"},
+  { id: "3", name: "David", online:"false" },
 ];
 
 export default function Index() {
