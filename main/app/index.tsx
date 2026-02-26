@@ -17,7 +17,7 @@ export default function Index() {
           <Text style={{ fontSize: 18, marginBottom: 10 }}>
             {item.name}
           </Text>
-          <Text>{item.online?"online":"offline"}</Text>
+          <Text style={{color:item.online?'green':'red'}}>{item.online?"online":"offline"}</Text>
           </View>
         )}
       />
