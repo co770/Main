@@ -16,9 +16,14 @@ export default function RootLayout() {
      )
    }}
   
-  >
-    <Stack.Screen name="modal" options={{
-      presentation:'modal'
-    }}/>
+  ><Stack.Screen
+  name="ModalScreen"
+  component={ModalScreen}
+  options={{
+    presentation: 'modal',
+    animation: 'slide_from_bottom', // forces bottom-up animation on Android
+  }}
+/>
+
   </Stack>;
 }
