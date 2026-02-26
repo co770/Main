@@ -23,6 +23,7 @@ export default function Index() {
           <Text style={{ fontSize: 12,}}>
             {item.name}
           </Text>
+          <Text></Text>
           </View>
           
           
