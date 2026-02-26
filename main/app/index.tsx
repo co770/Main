@@ -1,6 +1,6 @@
 import { Text, View,TouchableOpacity,TextInput,Image } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons'
-
+import {Link} from 'expo-router'
 export default function Index() {
   return (
     <View
