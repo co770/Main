@@ -1,84 +1,106 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const { width } = Dimensions.get('window');
 
-export default function CustomTabBar() {
-  const tabs = [
-    { name: 'Home', icon: 'home-outline' },
-    { name: 'Search', icon: 'search-outline' },
-    { name: 'Profile', icon: 'person-outline' },
-  ];
+// 1. Placeholder Screens
+const HomeScreen = () => (
+  <View style={styles.screen}><Text>Home Feed</Text></View>
+);
+const ProfileScreen = () => (
+  <View style={styles.screen}><Text>Profile Screen</Text></View>
+);
 
-  const [activeTab, setActiveTab] = useState(0);
-
+// 2. Custom Floating Tab Bar Component
+function FloatingTabBar({ state, descriptors, navigation }) {
   return (
-    <View style={{ flex: 1 }}>
-      {/* Content */}
-      <View style={styles.content}>
-        <Text style={{ fontSize: 24 }}>{tabs[activeTab].name} Screen</Text>
-      </View>
+    <View style={styles.tabContainer}>
+      <View style={styles.floatingBar}>
+        {state.routes.map((route, index) => {
+          const { options } = descriptors[route.key];
+          const isFocused = state.index === index;
 
-      {/* Tab Bar */}
-      <View style={styles.tabBar}>
-        {tabs.map((tab, index) => (
-          <TouchableOpacity
-            key={tab.name}
-            style={styles.tabItem}
-            onPress={() => setActiveTab(index)}
-          >
-            <Ionicons
-              name={tab.icon}
-              size={24}
-              color={activeTab === index ? '#4caf50' : '#888'}
-            />
-            <Text
-              style={{
-                color: activeTab === index ? '#4caf50' : '#888',
-                fontWeight: activeTab === index ? 'bold' : 'normal',
-              }}
+          const onPress = () => {
+            const event = navigation.emit({
+              type: 'tabPress',
+              target: route.key,
+              canPreventDefault: true,
+            });
+            if (!isFocused && !event.defaultPrevented) {
+              navigation.navigate(route.name);
+            }
+          };
+
+          return (
+            <TouchableOpacity 
+              key={route.key} 
+              onPress={onPress} 
+              style={styles.tabButton}
+              activeOpacity={0.8}
             >
-              {tab.name}
-            </Text>
-          </TouchableOpacity>
-        ))}
-
-        {/* Simple Indicator */}
-        <View
-          style={[
-            styles.indicator,
-            { width: width / tabs.length, left: (width / tabs.length) * activeTab },
-          ]}
-        />
+              <Text style={[styles.label, { color: isFocused ? '#673ab7' : '#888' }]}>
+                {route.name}
+              </Text>
+              {isFocused && <View style={styles.indicator} />}
+            </TouchableOpacity>
+          );
+        })}
       </View>
     </View>
   );
 }
 
+// 3. Main App
+const Tab = createBottomTabNavigator();
+
+export default function Index() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator
+        tabBar={(props) => <FloatingTabBar {...props} />}
+        screenOptions={{ headerShown: false }}
+      >
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Profile" component={ProfileScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
+
 const styles = StyleSheet.create({
-  content: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  tabBar: {
-    flexDirection: 'row',
-    height: 70,
-    backgroundColor: '#fff',
-    borderTopWidth: 0.5,
-    borderTopColor: '#ccc',
-    position: 'relative',
-  },
-  tabItem: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  indicator: {
-    height: 3,
-    backgroundColor: '#4caf50',
+  screen: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#f0f0f0' },
+  tabContainer: {
     position: 'absolute',
-    bottom: 0,
+    bottom: 30, // Distance from bottom of screen
+    width: width,
+    alignItems: 'center',
   },
+  floatingBar: {
+    flexDirection: 'row',
+    backgroundColor: '#ffffff',
+    width: width * 0.85, // Width of the floating bar
+    height: 65,
+    borderRadius: 35, // Rounded corners
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    // Shadow for iOS
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    // Elevation for Android
+    elevation: 10,
+  },
+  tabButton: { alignItems: 'center', flex: 1 },
+  label: { fontSize: 12, fontWeight: 'bold' },
+  indicator: {
+    marginTop: 4,
+    height: 4,
+    width: 4,
+    borderRadius: 2,
+    backgroundColor: '#673ab7',
+  }
 });
