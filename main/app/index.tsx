@@ -15,7 +15,7 @@ export default function Index() {
           style={{
             flexDirection: "row",
             padding: 15,
-            marginBottom:10
+            marginBottom:10,
             alignItems: "center",
             borderBottomWidth: 0.5,
           }}
