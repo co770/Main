@@ -8,7 +8,7 @@ const users = [
 
 export default function Index() {
   return (
-    <View style={{ flex: 1, padding: 20 }}>
+    <View style={{ flex: 1, padding: 20,gap:5 }}>
       <FlatList
         data={users}
         renderItem={({ item }) => (
