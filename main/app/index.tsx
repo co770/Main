@@ -1,50 +1,23 @@
-import { View, Text, TouchableOpacity, FlatList } from "react-native";
+import { View, Text, FlatList } from "react-native";
 
 const users = [
-  { id: "1", name: "John", online: true },
-  { id: "2", name: "Mary", online: false },
+  { id: "1", name: "John" },
+  { id: "2", name: "Mary" },
+  { id: "3", name: "David" },
 ];
 
 export default function Index() {
   return (
-    <FlatList
-      data={users}
-      keyExtractor={(item) => item.id}
-      renderItem={({ item }) => (
-        <TouchableOpacity
-          style={{
-            flexDirection: "row",
-            padding: 15,
-            marginBottom:10,
-            
-            alignItems: "center",
-            borderWidth:1,
-            borderColor:'#ccc',
-            borderRadius:8
-          }}
-        >
-          {/* Avatar */}
-          <View
-            style={{
-              width: 40,
-              height: 40,
-              borderRadius: 20,
-              backgroundColor: "#ccc",
-              marginRight: 10,
-            }}
-          />
-
-          {/* Name + status */}
-          <View>
-            <Text style={{ fontSize: 16, fontWeight: "bold" }}>
-              {item.name}
-            </Text>
-            <Text style={{ color: item.online ? "green" : "gray" }}>
-              {item.online ? "Online" : "Offline"}
-            </Text>
-          </View>
-        </TouchableOpacity>
-      )}
-    />
+    <View style={{ flex: 1, padding: 20 }}>
+      <FlatList
+        data={users}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <Text style={{ fontSize: 18, marginBottom: 10 }}>
+            {item.name}
+          </Text>
+        )}
+      />
+    </View>
   );
 }
