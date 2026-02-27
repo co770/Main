@@ -15,7 +15,13 @@ const StartAnimation=()=>{
 }
   
   return(
-    
+    <>
+      <View>
+        <Button onPress={StartAnimation}>clickme</Button>
+        <Animated.View style={{width:width,height:height,backgroundColor:'blue'}}>
+          </Animated.View>
+      </View>
+    </>
     
     
     )
