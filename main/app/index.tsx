@@ -3,7 +3,7 @@ import {Text,View,Button} from 'react-native'
 import Animated,{useSharedValue,withTiming} from 'react-native-reanimated'
 
 
-function Index(){
+export default function Index(){
   const width=useSharedValue(150)
   const height=useSharedValue(150)
   
